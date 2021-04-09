@@ -1,25 +1,80 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react"
+import "./App.css"
+import {
+  ChakraProvider,
+  Container,
+  Stack,
+  Box,
+  Heading,
+} from "@chakra-ui/react"
 
 function App() {
+  const [color, setColor] = useState("White")
+
+  const handleClickBlack = () => {
+    setColor("black")
+  }
+
+  const handleClickWhite = () => {
+    setColor("white")
+  }
+
+  const handleClickRed = () => {
+    setColor("red")
+  }
+
+  const handleClickBlue = () => {
+    setColor("blue")
+  }
+
+  const handleClickGreen = () => {
+    setColor("green")
+  }
+
+  const handleClickGray = () => {
+    setColor("gray")
+  }
+
+  const handleClickPink = () => {
+    setColor("pink")
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ChakraProvider>
+      <Container className="container" maxW="container.2xl" bg={color}>
+        <Container paddingTop="125" centerContent>
+          <Heading as="h1" fontSize="4xl" textAlign="end">
+            Color Change challenge
+          </Heading>
+        </Container>
+        <Container maxW="container.2xl" centerContent paddingTop="100">
+          <Stack direction="row">
+            <Box
+              bg="black"
+              w="100px"
+              h="100px"
+              onClick={handleClickBlack}
+            ></Box>
+            <Box bg="gray" w="100px" h="100px" onClick={handleClickGray}></Box>
+            <Box
+              bg="green"
+              w="100px"
+              h="100px"
+              onClick={handleClickGreen}
+            ></Box>
+            <Box bg="blue" w="100px" h="100px" onClick={handleClickBlue}></Box>
+            <Box bg="red" w="100px" h="100px" onClick={handleClickRed}></Box>
+            <Box bg="pink" w="100px" h="100px" onClick={handleClickPink}></Box>
+            <Box
+              bg="white"
+              w="100px"
+              h="100px"
+              onClick={handleClickWhite}
+            ></Box>
+          </Stack>
+        </Container>
+      </Container>
+    </ChakraProvider>
+  )
 }
 
-export default App;
+export default App
